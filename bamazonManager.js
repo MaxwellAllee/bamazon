@@ -70,7 +70,7 @@ function view() {
     });
 }
 function low() {
-    var query = connection.query("SELECT * FROM products", function (err, res) {
+    var query = connection.query("SELECT * FROM products" , function (err, res) {
         console.log("\r\n")
         for (var i = 0; i < res.length; i++) {
             if (res[i].stock_quantity < 5)

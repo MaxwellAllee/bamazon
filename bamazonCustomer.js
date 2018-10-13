@@ -63,17 +63,19 @@ function ask(pass) {
             else {
                 var newIn = pass[answers.ask-1].stock_quantity - answers.amount
                 var totalCost = pass[answers.ask-1].price*parseInt(answers.amount)
-                subtract(newIn, answers.ask, totalCost)
+                var revenue= totalCost+ pass[answers.ask-1].product_sales
+                subtract(newIn, answers.ask, totalCost,revenue)
                 
             }
         })
 }
-function subtract(pass, again,more){
+function subtract(pass, again,more,evenM){
     var query = connection.query(
         "UPDATE products SET ? WHERE ?",
         [
           {
-            stock_quantity: pass
+            stock_quantity: pass,
+            product_sales: evenM
           },
           {
             item_id: again
