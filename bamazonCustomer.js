@@ -27,7 +27,6 @@ function displayGoods() {
             console.log(res[i].item_id + " | " + res[i].product_name + " | $" + res[i].price);
             
         }
-        
         ask(res)
     });
 }
@@ -56,6 +55,7 @@ function ask(pass) {
                 }
             }])
         .then(function (answers) {
+            
             
             if (pass[answers.ask-1].stock_quantity < parseInt(answers.amount)) {
                 console.log("Insufficient quantity!")
@@ -87,7 +87,25 @@ function subtract(pass, again,more,evenM){
         })
         function total(pass) {
             console.log( "Your total comes to "+pass)
-            connection.end()
+            endThis()
             
         }
+}
+function endThis(){
+    inquirer
+        .prompt([
+            {
+                type: "confirm",
+                name: "continue",
+                message: "Would you like to continue to browse Bamazon: "
+            }])
+        .then(function (answers) {
+            if(answers.continue){
+                displayGoods()
+            }
+            else{
+                connection.end()
+            }
+        })
+    
 }

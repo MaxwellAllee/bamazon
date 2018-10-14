@@ -192,24 +192,6 @@ function newt() {
             console.log(query.sql);
         })
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function end() {
                 connection.end()
             }
