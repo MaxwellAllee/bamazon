@@ -35,7 +35,7 @@ function ask(pass) {
         .prompt([
             {
                 name: "ask",
-                message: "Please select the number of the item you would like to purchase",
+                message: "Please select the number of the item you would like to purchase?",
                 validate: function (value) {
                     if ((value) !== NaN) {
                         return true;
@@ -46,7 +46,7 @@ function ask(pass) {
             {
 
                 name: "amount",
-                message: "Please input the quantity of the product you would like",
+                message: "Please input the quantity of the product you would like?",
                 validate: function (value) {
                     if ((value) !== NaN) {
                         return true;
@@ -58,9 +58,11 @@ function ask(pass) {
             
             
             if (pass[answers.ask-1].stock_quantity < parseInt(answers.amount)) {
-                console.log("Insufficient quantity!")
+                console.log("\n\r Insufficient quantity!")
+                ask(pass)
             }
             else {
+                
                 var newIn = pass[answers.ask-1].stock_quantity - answers.amount
                 var totalCost = pass[answers.ask-1].price*parseInt(answers.amount)
                 var revenue= totalCost+ pass[answers.ask-1].product_sales

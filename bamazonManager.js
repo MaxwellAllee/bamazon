@@ -189,7 +189,7 @@ function newt() {
             );
 
             // logs the actual query being run
-            console.log(query.sql);
+           // console.log(query.sql);
         })
     }
 function end() {

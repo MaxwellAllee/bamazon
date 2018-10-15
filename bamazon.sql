@@ -31,10 +31,5 @@ INSERT INTO departments (department_name, over_head_costs)
 VALUES("Outdoors", 700), ("Electronics", 2000), ("Toys", 600);
 
 
-SELECT departments.department_id, departments.department_name, departments.over_head_costs, sum(products.product_sales) AS product_sales, (sum(products.product_sales)-departments.over_head_costs) AS total_profit
-FROM products
-INNER JOIN departments ON products.department_name = departments.department_name
-GROUP BY departments.department_name
-ORDER BY department_id asc;
 
 
