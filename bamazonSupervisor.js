@@ -1,7 +1,8 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer")
-
-var dataB = []
+var Table = require('cli-table')
+var table = new Table()
+var rest =[]
 var connection = mysql.createConnection({
     host: "localhost",
 
@@ -48,6 +49,23 @@ function ask() {
             }
         })
 }
+function view() {
+     var query = connection.query("SELECT * FROM products ", function (err, res) {
+    rest = res
+      tableS()  
+      
+    });
+}
+function tableS(){
+  console.log(rest)
+}
+
+
+
+
+
+
+
 function end() {
     connection.end()
 }
